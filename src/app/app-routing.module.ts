@@ -7,11 +7,11 @@ import { PrivatePageComponent } from './components/private-page/private-page.com
 import { NotFoundPageComponent } from './components/not-found-page/not-found-page.component';
 
 const routes: Routes = [
+  {path:'', component: HomePageComponent},
   {path: 'login', component: LoginPageComponent},
   {path:'register', component: RegisterPageComponent},
   {path:'private', component: PrivatePageComponent},
-  {path:'**', component: NotFoundPageComponent},
-  {path:'', component: HomePageComponent, pathMatch: 'full'}
+  {path:'**', component: NotFoundPageComponent}
 ];
 
 @NgModule({

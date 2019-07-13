@@ -1,0 +1,28 @@
+.btn-facebook,
+.btn-google,
+.btn-twitter {
+    width: 32%;
+}
+
+@media all and (max-width:480px) {
+    .btn-sm-new {
+        padding: 12px 12px;
+        font-size: 10px;
+        line-height: 1.5;
+    }
+}
+
+.btn-facebook {
+    background: #3b5998;
+    color: white;
+}
+
+.btn-google {
+    background: #dd4b39;
+    color: white;
+}
+
+.btn-twitter {
+    background: #55acee;
+    color: white;
+}
