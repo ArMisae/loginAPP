@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth }from '@angular/fire/auth';
-import * as firebase from 'firebase/app';
 
 
 @Injectable({
@@ -29,7 +28,7 @@ export class OuthService {
   }
 
   getAuth(){
-    return this.afAuth.authState.subscribe(auth=> auth);
+    return this.afAuth.authState.pipe(auth=> auth);
   }
 
   logout(){
