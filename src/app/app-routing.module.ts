@@ -10,7 +10,7 @@ const routes: Routes = [
   {path: 'login', component: LoginPageComponent},
   {path:'register', component: RegisterPageComponent},
   {path:'private', component: PrivatePageComponent},
-  {path:'notfound', component: NotFoundPageComponent},
+  {path:'**', component: NotFoundPageComponent},
   {path:'', component: HomePageComponent, pathMatch: 'full'}
 ];
 
