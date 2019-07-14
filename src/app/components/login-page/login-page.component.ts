@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { OuthService } from '../../services/outh.service';
 import { Router } from '@angular/router';
+import { FlashMessagesService } from 'angular2-flash-messages';
 
 
 @Component({
@@ -15,7 +16,8 @@ export class LoginPageComponent implements OnInit {
 
   constructor(
     public authService: OuthService,
-    public router: Router
+    public router: Router,
+    public flashMensaje: FlashMessagesService
   ) { }
 
   ngOnInit() {
@@ -24,9 +26,14 @@ export class LoginPageComponent implements OnInit {
   onSubmitLogin(){
     return this.authService.loginEmail(this.email, this.password)
     .then((resp)=>{
+      this.flashMensaje.show('Welcome! to the Task Application.',{
+        cssClass: 'alert alert-info', timeout: 4000
+      });
       this.router.navigate(['/private']);
     }).catch((err)=>{
-      console.log(err);
+      this.flashMensaje.show(err.message,{
+        cssClass: 'alert-danger', timeout: 4000
+      });
       this.router.navigate(['/login']);
     });
   }

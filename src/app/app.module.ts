@@ -12,6 +12,8 @@ import { PrivatePageComponent } from './components/private-page/private-page.com
 import { NotFoundPageComponent } from './components/not-found-page/not-found-page.component';
 import { FooterComponent } from './components/footer/footer.component';
 
+import { FlashMessagesModule, FlashMessagesService } from 'angular2-flash-messages'
+
 import { AngularFireModule} from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 
@@ -37,9 +39,10 @@ import { AuthGuard } from './guards/auth.guard';
     AppRoutingModule,
     FormsModule,
     AngularFireAuthModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig)
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    FlashMessagesModule
   ],
-  providers: [OuthService, AuthGuard],
+  providers: [OuthService, AuthGuard, FlashMessagesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
