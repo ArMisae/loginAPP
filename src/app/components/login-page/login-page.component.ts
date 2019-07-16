@@ -29,7 +29,7 @@ export class LoginPageComponent implements OnInit {
       this.flashMensaje.show('Welcome! to the Task Application.',{
         cssClass: 'alert alert-info', timeout: 4000
       });
-      this.router.navigate(['/private']);
+      this.router.navigate(['/task']);
     }).catch((err)=>{
       this.flashMensaje.show(err.message,{
         cssClass: 'alert-danger', timeout: 4000
@@ -41,18 +41,30 @@ export class LoginPageComponent implements OnInit {
   onClickGoogleLogin(){
     this.authService.loginGoogle()
     .then((res)=>{
-      this.router.navigate(['/private']);
+      this.flashMensaje.show('Welcome! to the Task Application.',{
+        cssClass: 'alert alert-info', timeout: 4000
+      });
+      this.router.navigate(['/task']);
     }).catch((err) =>{
-    console.log(err);
+      this.flashMensaje.show(err.message,{
+        cssClass: 'alert-danger', timeout: 4000
+      });
+      this.router.navigate(['/login']);
     });
   }
 
   onClickFacebookLogin(){
     this.authService.loginFacebook()
     .then((res)=>{
-      this.router.navigate(['/private']);
+      this.flashMensaje.show('Welcome! to the Task Application.',{
+        cssClass: 'alert alert-info', timeout: 4000
+      });
+      this.router.navigate(['/task']);
     }).catch((err) => {
-      console.log(err);
+      this.flashMensaje.show(err.message,{
+        cssClass: 'alert-danger', timeout: 4000
+      });
+      this.router.navigate(['/login']);
     });
   }
 
