@@ -20,8 +20,11 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from '../environments/environment';
 
 import { OuthService } from './services/outh.service';
+import { TriggerService } from './services/trigger.service';
 
 import { AuthGuard } from './guards/auth.guard';
+import { CreatetriggersComponent } from './components/createtriggers/createtriggers.component';
+import { ColumntriggerComponent } from './components/columntrigger/columntrigger.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +35,9 @@ import { AuthGuard } from './guards/auth.guard';
     LoginPageComponent,
     PrivatePageComponent,
     NotFoundPageComponent,
-    FooterComponent
+    FooterComponent,
+    CreatetriggersComponent,
+    ColumntriggerComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +47,7 @@ import { AuthGuard } from './guards/auth.guard';
     AngularFireModule.initializeApp(environment.firebaseConfig),
     FlashMessagesModule
   ],
-  providers: [OuthService, AuthGuard, FlashMessagesService],
+  providers: [OuthService, AuthGuard, FlashMessagesService,TriggerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

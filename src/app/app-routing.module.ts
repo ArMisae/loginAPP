@@ -5,6 +5,7 @@ import { RegisterPageComponent } from './components/register-page/register-page.
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { PrivatePageComponent } from './components/private-page/private-page.component';
 import { NotFoundPageComponent } from './components/not-found-page/not-found-page.component';
+import { CreatetriggersComponent } from './components/createtriggers/createtriggers.component';
 
 import { AuthGuard } from './guards/auth.guard';
 
@@ -13,6 +14,7 @@ const routes: Routes = [
   {path: 'login', component: LoginPageComponent},
   {path:'register', component: RegisterPageComponent},
   {path:'task', component: PrivatePageComponent, canActivate: [AuthGuard] },
+  { path: 'triggers', component: CreatetriggersComponent, canActivate: [AuthGuard] },
   {path:'**', component: NotFoundPageComponent}
 ];
 
