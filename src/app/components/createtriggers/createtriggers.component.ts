@@ -12,6 +12,9 @@ import { Triggers } from '../../models/Triggers';
 export class CreatetriggersComponent implements OnInit {
 
   triggers: Triggers[];
+  
+  colum: Triggers[];
+  descripcion: string;
 
   constructor(
     public triggerService: TriggerService 
@@ -20,6 +23,7 @@ export class CreatetriggersComponent implements OnInit {
   ngOnInit() {
 
     this.triggers = this.triggerService.getTriggers();
+    
 
   }
 
@@ -32,6 +36,29 @@ export class CreatetriggersComponent implements OnInit {
     newNumber.value='';
     newColumn.focus();
     return false;
+  }
+
+  Generar(Trigger: Triggers){
+    let colum: Array<any> = [];
+    let colum2: Array<any> = [];
+    let colum3: Array<any> = [];
+    for (let i = 0; i < this.triggers.length; i++) {
+       colum.push('@'+Trigger[i].column+'Nuevo AS '+Trigger[i].type+'('+Trigger[i].number+')\n'+',@'+Trigger[i].column+'Anterior AS '+Trigger[i].type+'('+Trigger[i].number+')\n');
+    }
+    for (let i = 0; i < this.triggers.length; i++) {
+      colum2.push('@'+Trigger[i].column+'Nuevo = '+Trigger[i].column);
+    }
+   for (let i = 0; i < this.triggers.length; i++) {
+    colum3.push('@'+Trigger[i].column+'Anterior = '+Trigger[i].column);
+    }
+    this.descripcion =  'CREATE TRIGGER tr_UpdAuditoria ON ' + Trigger[0].table+ ' AFTER UPDATE\n'
+                          + 'AS\n'
+                          + 'DECLARE '+colum+ '\n'
+                          +'BEGIN\n'
+                          +'SELECT '+colum2+ ' FROM INSERTED\n'
+                          +'\n'
+                          +'SELECT '+colum3+ ' FROM DELETED\n'
+                          +'END';
   }
   
 

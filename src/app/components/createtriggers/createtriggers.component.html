@@ -14,7 +14,7 @@
 
                             <h5 class="card-title text-primary text-justify">Ingrese los campos de la tabla en orden para generar el TRIGGER</h5>
 
-                            <div class="form-group col-6">
+                            <div class="form-group col-md-6 col-sm-12">
 
                                 <input type="text" class="form-control" placeholder="Nombre de la Tabla" #newTable>
 
@@ -59,18 +59,49 @@
 
             </div>
 
+            <br>
+
+            <app-columntrigger *ngFor="let trigger of triggers" [trigger]="trigger"></app-columntrigger>
+
+        </div>
+
+        <div class="col-md-5">
+
+            <div class="card">
+
+                <div class="card-body">
+
+                    <form>
+
+                        <div class="form-row">
+
+                            <div class="form-group col-6">
+                                <label>Copy TRIGGER</label>
+                            </div>
+
+                            <div class="form-group col-6 text-right">
+
+                                <button class="btn btn-warning btn-sm" (click)="Generar(triggers)">Generar</button>
+
+                            </div>
+
+                            <textarea class="form-control" id="descripcion" name="descripcion" [ngModel]="descripcion" rows="17"></textarea>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
         </div>
 
     </div>
 
-    <br>
-
     <div class="row">
 
-        <div class="col-md-7">
-            <app-columntrigger *ngFor="let trigger of triggers" [trigger]="trigger"></app-columntrigger>
 
-        </div>
     </div>
 
 </div>
