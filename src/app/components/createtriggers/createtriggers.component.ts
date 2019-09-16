@@ -38,20 +38,20 @@ export class CreatetriggersComponent implements OnInit {
     return false;
   }
 
-  Generar(Trigger: Triggers){
+  Generar(){
     let colum: Array<any> = [];
     let colum2: Array<any> = [];
     let colum3: Array<any> = [];
     for (let i = 0; i < this.triggers.length; i++) {
-       colum.push('@'+Trigger[i].column+'Nuevo AS '+Trigger[i].type+'('+Trigger[i].number+')\n'+',@'+Trigger[i].column+'Anterior AS '+Trigger[i].type+'('+Trigger[i].number+')\n');
+       colum.push('@'+this.triggers[i].column+'Nuevo AS '+this.triggers[i].type+'('+this.triggers[i].number+')\n'+',@'+this.triggers[i].column+'Anterior AS '+this.triggers[i].type+'('+this.triggers[i].number+')\n');
     }
     for (let i = 0; i < this.triggers.length; i++) {
-      colum2.push('@'+Trigger[i].column+'Nuevo = '+Trigger[i].column);
+      colum2.push('@'+this.triggers[i].column+'Nuevo = '+this.triggers[i].column);
     }
    for (let i = 0; i < this.triggers.length; i++) {
-    colum3.push('@'+Trigger[i].column+'Anterior = '+Trigger[i].column);
+    colum3.push('@'+this.triggers[i].column+'Anterior = '+this.triggers[i].column);
     }
-    this.descripcion =  'CREATE TRIGGER tr_UpdAuditoria ON ' + Trigger[0].table+ ' AFTER UPDATE\n'
+    this.descripcion =  'CREATE TRIGGER tr_UpdAuditoria ON ' + this.triggers[0].table+ ' AFTER UPDATE\n'
                           + 'AS\n'
                           + 'DECLARE '+colum+ '\n'
                           +'BEGIN\n'
